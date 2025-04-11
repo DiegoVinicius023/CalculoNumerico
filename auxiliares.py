@@ -102,3 +102,28 @@ class Auxiliares:
             if soma/divisor >= 1:
                 return False
         return True
+    
+    def inicia_gauss_seidel(vx, matrix, k, tol, funcerr = erreelnum):
+        if not Auxiliares.Sassenfeld(matrix):
+            return "Matriz não converge"
+        return Auxiliares.gauss_seidel(vx,matrix,k,tol,funcerr)
+    
+    def vetor_matriz(vx):
+        l = []
+        for x in vx:
+            l.append([x])
+        return Matrix(l)
+    
+    def gera_expandida(vx,vy,npol):
+        y = Auxiliares.vetor_matriz(vy)
+
+        vgt = []
+        for i in range(npol+1):
+            vi = [x**i for x in vx]
+            vgt.append(vi)
+        Gt = Matrix(vgt)
+        G = Gt.transpose()
+
+        A = Gt*G
+        B = Gt*y
+        return A.col_insert(npol+1,B)
