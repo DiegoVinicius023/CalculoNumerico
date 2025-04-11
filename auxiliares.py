@@ -6,8 +6,7 @@ class Auxiliares:
     def errrel(x,xant,tol):
         return np.abs((x-xant)/x) < tol
     def erreelnum(x,xant):
-        return np.abs((x-xant)/x)
-    
+        return np.abs((x-xant)/x)   
     def errabs(x,xant,tol):
         return np.abs(x-xant) < tol
     
@@ -67,16 +66,16 @@ class Auxiliares:
                 return (x+x1)/2
         return Auxiliares.bissecao(x,x1,f,k,tol)
 
-    def gauss_seidel(vx, matrix, k, tol, funcerr = erreelnum):
+    def gauss_seidel(vx, matrix, k, tol,narred = 5, funcerr = erreelnum):
         vxnew = vx.copy()
         exnew = []
         for i in range(len(vx)):
-            vxnew[i] = Auxiliares.funcpad(vxnew,matrix.row(i),i)
+            vxnew[i] = round(Auxiliares.funcpad(vxnew,matrix.row(i),i),narred)
             exnew.append(funcerr(vxnew[i],vx[i]))
         k -= 1
         if (k==0) or (max(exnew) <= tol): return vxnew
 
-        return Auxiliares.gauss_seidel(vxnew,matrix,k,tol,funcerr)        
+        return Auxiliares.gauss_seidel(vxnew,matrix,k,tol,narred,funcerr)        
     
     def funcpad (vx, sist, pos):
         soma = 0
@@ -102,3 +101,51 @@ class Auxiliares:
             if soma/divisor >= 1:
                 return False
         return True
+    
+    def inicia_gauss_seidel(vx, matrix, k, tol,narred = 5, funcerr = erreelnum):
+        if not Auxiliares.Sassenfeld(matrix):
+            return "Matriz não converge"
+        return Auxiliares.gauss_seidel(vx,matrix,k,tol, narred,funcerr)
+    
+    def resolve_linha(vx,matriz_linha,pos,narred=5):
+        soma = 0
+        for i in range(len(vx)+1):
+            if i != pos:
+                if i == len(vx):
+                    soma += matriz_linha[i]
+                else:
+                    soma -= vx[i]*matriz_linha[i]
+        return round(soma/matriz_linha[pos],narred)
+
+    def eliminacao_gauss(matrix,npol,narred):
+        escada = matrix.rref()[0]
+        vfinal = [0]*(npol+1)
+
+        for i in range(npol+1):
+            vfinal[npol-i] = Auxiliares.resolve_linha(vfinal,escada.row(npol-i),npol-i,narred)
+        return vfinal
+        
+
+    def vetor_matriz(vx):
+        l = []
+        for x in vx:
+            l.append([x])
+        return Matrix(l)
+    
+    def gera_expandida(vx,vy,npol):
+        y = Auxiliares.vetor_matriz(vy)
+
+        vgt = []
+        for i in range(npol+1):
+            vi = [x**i for x in vx]
+            vgt.append(vi)
+        Gt = Matrix(vgt)
+        G = Gt.transpose()
+
+        A = Gt*G
+        B = Gt*y
+        return A.col_insert(npol+1,B)
+    
+    def minimos_quadrados(vx,vy,npol,narred=5):
+        expandida = Auxiliares.gera_expandida(vx,vy,npol)
+        return Auxiliares.eliminacao_gauss(expandida,npol,narred)
