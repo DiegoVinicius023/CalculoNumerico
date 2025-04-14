@@ -40,7 +40,7 @@ class Atividade3:
         ntc = Auxiliares.minimos_quadrados(vx,vntc,1)
         beta = "não feito"
         return [alpha, beta]
-
+ 
     def ex5():
         vx = [-3,-1,1,2,3]
         vy = [-1,0,1,1,-1]
