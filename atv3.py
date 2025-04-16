@@ -48,8 +48,9 @@ class Atividade3:
         narred = 4
         return Auxiliares.minimos_quadrados(vx,vy,npol,narred)
 
-print(f"1: {Atividade3.ex1()}")
-print(f"2: {Atividade3.ex2()}")
-print(f"3: {Atividade3.ex3()}")
-print(f"4: {Atividade3.ex4()}")
-print(f"5: {Atividade3.ex5()}")
+if __name__ == '__main__':
+    print(f"1: {Atividade3.ex1()}")
+    print(f"2: {Atividade3.ex2()}")
+    print(f"3: {Atividade3.ex3()}")
+    print(f"4: {Atividade3.ex4()}")
+    print(f"5: {Atividade3.ex5()}")

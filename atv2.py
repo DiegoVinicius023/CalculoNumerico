@@ -81,10 +81,10 @@ class Atividade2:
         ])
         raise NotImplementedError()
 
-            
-print(f"1a: {Atividade2.ex1a()}")
-print(f"1b: {Atividade2.ex1b()}")
-print(f"1c: {Atividade2.ex1c()}")
-print(f"2: {Atividade2.ex2()}")
-print(f"4:{Atividade2.ex4()}")
-# print(f"5: {Atividade2.ex5()}")
+if __name__ == '__main__':
+    print(f"1a: {Atividade2.ex1a()}")
+    print(f"1b: {Atividade2.ex1b()}")
+    print(f"1c: {Atividade2.ex1c()}")
+    print(f"2: {Atividade2.ex2()}")
+    print(f"4:{Atividade2.ex4()}")
+    # print(f"5: {Atividade2.ex5()}")

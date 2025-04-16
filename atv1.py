@@ -101,11 +101,11 @@ class Atividade1:
 
         return Auxiliares.secante(x0,x1,f7,k,tol)
 
-
-print(f"Atv1: {Atividade1.ex1()}\n")
-print(f"Atv2: {Atividade1.ex2()}\n")
-print(f"Atv3: {Atividade1.ex3()}\n")
-print(f"Atv4: {Atividade1.ex4()}\n")
-print(f"Atv5: {Atividade1.ex5()}\n")
-print(f"Atv6: {Atividade1.ex6()}\n")
-print(f"Atv7: {Atividade1.ex7()}\n")
+if __name__ == '__main__':
+    print(f"Atv1: {Atividade1.ex1()}\n")
+    print(f"Atv2: {Atividade1.ex2()}\n")
+    print(f"Atv3: {Atividade1.ex3()}\n")
+    print(f"Atv4: {Atividade1.ex4()}\n")
+    print(f"Atv5: {Atividade1.ex5()}\n")
+    print(f"Atv6: {Atividade1.ex6()}\n")
+    print(f"Atv7: {Atividade1.ex7()}\n")
