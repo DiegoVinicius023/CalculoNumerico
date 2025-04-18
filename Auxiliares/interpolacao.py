@@ -37,7 +37,7 @@ class Interpolacao:
     def gera_vetores(pontos):
         return zip(*pontos)
     
-    def difdiv(vx,vy,pos,ordem):
+    def difv_div(vx,vy,pos,ordem):
         return (vy[pos+1]-vy[pos])/(vx[pos+ordem+1]-vx[pos])
 
     def gera_diferencas_divididas(vx,dict_diferencas_div,narred=4):
@@ -46,8 +46,8 @@ class Interpolacao:
         if len(dict_diferencas_div[ordem]) > 1:
             ordem_n = []
             for i in range(len(dict_diferencas_div[ordem])-1):
-                valor_difdiv = Interpolacao.difdiv(vx,dict_diferencas_div[ordem],i,ordem)
-                ordem_n.append(round(valor_difdiv,narred))
+                valor_difv_div = Interpolacao.difv_div(vx,dict_diferencas_div[ordem],i,ordem)
+                ordem_n.append(round(valor_difv_div,narred))
             dict_diferencas_div[ordem+1] = ordem_n
             return Interpolacao.gera_diferencas_divididas(vx,dict_diferencas_div)
         return dict_diferencas_div

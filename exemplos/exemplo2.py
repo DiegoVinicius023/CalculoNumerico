@@ -37,7 +37,7 @@ def exlagrange():
 
     return round(Interpolacao.lagrange(vx,vy,len(vx)-1,0.3)[0],3)
 
-def exdifdiv():
+def exdif_div():
     vx = [0.3,1.5,2.1]
     vy = [3.09,17.25,25.41]
     dict_diferencas_div = {0: vy}
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     print(f"linear: {exlinear()}")
     print(f"quadrático: {exquad()}")
     print(f"lagrange: {exlagrange()}")
-    print(f"Diferenças Divididas: {exdifdiv()}")
+    print(f"Diferenças Divididas: {exdif_div()}")
     print(f"Interpolação de Newton: {exinternewton()}")
     print(f"Interpolação de Newton 2: {exinternewton2()}")
     print(f"Erro de interpolação <= {exerrointerpol()}")
