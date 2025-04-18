@@ -1,4 +1,4 @@
-from auxiliares import Auxiliares
+from Auxiliares.solucaoSistema import SolucaoSistema
 from sympy import Matrix
 
 class Atividade2:
@@ -9,10 +9,10 @@ class Atividade2:
             [-1,3,1,-4]
             
         ])
-        if not Auxiliares.Sassenfeld(matriz):
+        if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0]
-        return Auxiliares.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
     
     def ex1b():
         matriz = Matrix([
@@ -21,10 +21,10 @@ class Atividade2:
             [-1,-1,-5,1,0],
             [1,-1,2,1,1]
         ])
-        if not Auxiliares.Sassenfeld(matriz):
+        if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0,0]
-        return Auxiliares.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
     
     def ex1c():
         matriz = Matrix([
@@ -32,10 +32,10 @@ class Atividade2:
             [0.652,0.36,0.12,0.8],
             [0.147,0.21,0.65,0.9]
         ])
-        if not Auxiliares.Sassenfeld(matriz):
+        if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0]
-        return Auxiliares.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
     
     def ex2():
         matriz = Matrix([
@@ -44,7 +44,7 @@ class Atividade2:
             [-1,5,3,3],
             [4,1,6,1]
         ])
-        return Auxiliares.Sassenfeld(matriz)
+        return SolucaoSistema.Sassenfeld(matriz)
     
     # def ex3():
     #     a=0.5

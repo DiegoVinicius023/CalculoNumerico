@@ -1,5 +1,5 @@
 import numpy as np
-from auxiliares import Auxiliares
+from Auxiliares.pontoFlutuante import PontoFlutuante
 
 class Atividade1:
     def ex1():
@@ -19,7 +19,7 @@ class Atividade1:
         tol = 10E-4
         k = 15
 
-        return Auxiliares.newton_rapson(x0,f1,df1,k,tol)
+        return PontoFlutuante.newton_rapson(x0,f1,df1,k,tol)
     
     def ex2():
         def f2(x):
@@ -32,7 +32,7 @@ class Atividade1:
         tol = 1E-7
         k=40
 
-        return Auxiliares.newton_rapson(x0,f2,df2,k,tol)
+        return PontoFlutuante.newton_rapson(x0,f2,df2,k,tol)
     
     def ex3():
         def f3(x):
@@ -45,8 +45,8 @@ class Atividade1:
         x1 = 1.5
         tol = 1E-5
         k = 10
-        # return Auxiliares.newton_rapson(x0,df3,df3,k,tol)
-        return Auxiliares.secante(x0,x1,df3,k,tol)
+        # return PontoFlutuante.newton_rapson(x0,df3,df3,k,tol)
+        return PontoFlutuante.secante(x0,x1,df3,k,tol)
     
     def ex4():
         def f4(h,l=3,r=0.3,v=0.33):
@@ -57,8 +57,8 @@ class Atividade1:
         k= 20
         tol = 1E-3
         #faltou fazer que a profundidade é R-h
-        # return Auxiliares.secante(x0,x1,f4,k,tol)
-        h = Auxiliares.secante(x0,x1,f4,k,tol)
+        # return PontoFlutuante.secante(x0,x1,f4,k,tol)
+        h = PontoFlutuante.secante(x0,x1,f4,k,tol)
         r = 0.3
         return r-h
     
@@ -70,7 +70,7 @@ class Atividade1:
         k = 300
         tol = 10E-5
 
-        return Auxiliares.bissecao(x0,x1,f5,k,tol)
+        return PontoFlutuante.bissecao(x0,x1,f5,k,tol)
     
     def ex6():
         #precisamos achar o 0 da derivada para ter o ponto minimo
@@ -86,7 +86,7 @@ class Atividade1:
         x0 = 1
         k=20
 
-        return Auxiliares.newton_rapson(x0,f6,df6,k,tol)
+        return PontoFlutuante.newton_rapson(x0,f6,df6,k,tol)
     
     def ex7():
         def f7(x):
@@ -99,7 +99,7 @@ class Atividade1:
         tol = np.power(10.0,-3)
         k=20
 
-        return Auxiliares.secante(x0,x1,f7,k,tol)
+        return PontoFlutuante.secante(x0,x1,f7,k,tol)
 
 if __name__ == '__main__':
     print(f"Atv1: {Atividade1.ex1()}\n")
