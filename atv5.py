@@ -2,7 +2,7 @@ from sympy import Matrix, symbols
 from Auxiliares.integracao import Integracao
 import numpy as np
 
-class Atividade4:
+class Atividade5:
     def ex1():
 
         f = lambda x: (x**4)-(4*x**2)
@@ -197,15 +197,15 @@ class Atividade4:
         return area_trapezio, area_simpson
 
 if __name__ == '__main__':
-    # print(f"1: {Atividade4.ex1()}")
-    # print(f"2: {Atividade4.ex2()}")
-    # print(f"3: {Atividade4.ex3()}")
-    # print(f"4: {Atividade4.ex4()}")
-    # print(f"5: {Atividade4.ex5()}")
-    # print(f"6: {Atividade4.ex6()}")
-    # print(f"7: {Atividade4.ex7()}")
-    # print(f"8: {Atividade4.ex8()}")
-    # print(f"9: {Atividade4.ex9()}")
-    # print(f"10: {Atividade4.ex10()}")
-    # print(f"11: {Atividade4.ex11()}")
-    print(f"12: {Atividade4.ex12()}")
+    print(f"1: {Atividade5.ex1()}")
+    print(f"2: {Atividade5.ex2()}")
+    print(f"3: {Atividade5.ex3()}")
+    print(f"4: {Atividade5.ex4()}")
+    print(f"5: {Atividade5.ex5()}")
+    print(f"6: {Atividade5.ex6()}")
+    print(f"7: {Atividade5.ex7()}")
+    print(f"8: {Atividade5.ex8()}")
+    print(f"9: {Atividade5.ex9()}")
+    print(f"10: {Atividade5.ex10()}")
+    print(f"11: {Atividade5.ex11()}")
+    print(f"12: {Atividade5.ex12()}")
