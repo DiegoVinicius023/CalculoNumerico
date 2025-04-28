@@ -20,7 +20,7 @@ class Atividade4:
         npol = 1
 
         dfn = lambda x: -1/(x**2)
-        maj = Interpolacao.majorante_n(vx[2:4],dfn)
+        maj = Interpolacao.majoranteN(vx[2:4],dfn)
         h = Interpolacao.h(emax,maj,npol)
         return f"\nLinear: {linear[0]}\nQuadrática: {quad[0]}\nh: {h}\n"
     
@@ -30,13 +30,13 @@ class Atividade4:
             (2.5,8.726),
             (2.75,10.870)
         ]
-        vx,vy = Interpolacao.gera_vetores(pontos)
+        vx,vy = Interpolacao.geraVetores(pontos)
         xval = 2.4
 
-        res, pol = Interpolacao.internewton(vx,vy,xval)
+        res, pol = Interpolacao.interNewton(vx,vy,xval)
 
         dfn = lambda x: ((6+x)/8)*np.exp(x/2)
-        maxe = Interpolacao.maxerror(vx,dfn,len(vx)-1,xval)
+        maxe = Interpolacao.maxError(vx,dfn,len(vx)-1,xval)
         return f"\nPolinômio: {pol}\nPn(2.4): {res}\nmaxerror: {maxe}\n"
     
     def ex3():
@@ -50,10 +50,10 @@ class Atividade4:
 
         xval = 0.55
 
-        valg = Interpolacao.internewton(vx[:npol+1],vyg[:npol+1],xval,narred)[0]
+        valg = Interpolacao.interNewton(vx[:npol+1],vyg[:npol+1],xval,narred)[0]
         pnxval = round(valg/xval,narred)
 
-        maxe = Interpolacao.maxerrorpontos(vx,vyg,npol,xval,10)
+        maxe = Interpolacao.maxErrorPontos(vx,vyg,npol,xval,10)
 
         return pnxval, maxe
     

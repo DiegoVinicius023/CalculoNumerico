@@ -6,8 +6,8 @@ from Auxiliares.solucaoSistema import SolucaoSistema
 class Interpolacao:
 
     def interpolacao(vx,vy,npol,xval=None,narred=4):
-        matriz = MinimosQuadrados.gera_matriz_coef(vx,vy,npol)
-        gauss = SolucaoSistema.eliminacao_gauss(matriz,npol,narred)
+        matriz = MinimosQuadrados.geraMatrizCoef(vx,vy,npol)
+        gauss = SolucaoSistema.eliminacaoGauss(matriz,npol,narred)
 
         x = symbols('x')
         equacao = 0
@@ -34,28 +34,28 @@ class Interpolacao:
             return soma
         return round(soma.subs(symbols('x'),xval),narred),soma
     
-    def gera_vetores(pontos):
+    def geraVetores(pontos):
         return zip(*pontos)
     
-    def difv_div(vx,vy,pos,ordem):
+    def difDiv(vx,vy,pos,ordem):
         return (vy[pos+1]-vy[pos])/(vx[pos+ordem+1]-vx[pos])
 
-    def gera_diferencas_divididas(vx,dict_diferencas_div,narred=4):
+    def geraDiferencasDivididas(vx,dict_diferencas_div,narred=4):
         ordem = max(dict_diferencas_div.keys())
 
         if len(dict_diferencas_div[ordem]) > 1:
             ordem_n = []
             for i in range(len(dict_diferencas_div[ordem])-1):
-                valor_difv_div = Interpolacao.difv_div(vx,dict_diferencas_div[ordem],i,ordem)
-                ordem_n.append(round(valor_difv_div,narred))
+                valor_dif_div = Interpolacao.difDiv(vx,dict_diferencas_div[ordem],i,ordem)
+                ordem_n.append(round(valor_dif_div,narred))
             dict_diferencas_div[ordem+1] = ordem_n
-            return Interpolacao.gera_diferencas_divididas(vx,dict_diferencas_div)
+            return Interpolacao.geraDiferencasDivididas(vx,dict_diferencas_div)
         return dict_diferencas_div
     
-    def internewton(vx,vy,xval=None,narred=4):
+    def interNewton(vx,vy,xval=None,narred=4):
         diferencas_divididas = {0:vy}
 
-        diferencas_divididas = Interpolacao.gera_diferencas_divididas(vx,diferencas_divididas)
+        diferencas_divididas = Interpolacao.geraDiferencasDivididas(vx,diferencas_divididas)
 
         x = symbols('x')
         soma = 0
@@ -70,7 +70,7 @@ class Interpolacao:
             return round(soma.subs(symbols('x'),xval),narred), soma
         return soma
     
-    def maxerror(vx,dfn,npol,xval,narred=4):
+    def maxError(vx,dfn,npol,xval,narred=4):
         x = symbols('x')
         maj = 0
         produto = 1
@@ -84,8 +84,8 @@ class Interpolacao:
         emax = round(abs(produto.subs(symbols('x'),xval)),narred)
         return emax
     
-    def maxerrorpontos(vx,vy,npol,xval,narred=10):
-        difer_div = Interpolacao.gera_diferencas_divididas(vx[:npol+2],{0:vy[:npol+2]},narred)
+    def maxErrorPontos(vx,vy,npol,xval,narred=10):
+        difer_div = Interpolacao.geraDiferencasDivididas(vx[:npol+2],{0:vy[:npol+2]},narred)
 
         x = symbols('x')
         produto = difer_div[max(difer_div.keys())][0]
@@ -93,7 +93,7 @@ class Interpolacao:
             produto *= (x-xi)
         return produto.subs(symbols('x'),xval)
     
-    def majorante_n(vx,dfn):
+    def majoranteN(vx,dfn):
         maj = 0
 
         for xi in vx:

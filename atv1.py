@@ -19,7 +19,7 @@ class Atividade1:
         tol = 10E-4
         k = 15
 
-        return PontoFlutuante.newton_rapson(x0,f1,df1,k,tol)
+        return PontoFlutuante.newtonRapson(x0,f1,df1,k,tol)
     
     def ex2():
         def f2(x):
@@ -32,7 +32,7 @@ class Atividade1:
         tol = 1E-7
         k=40
 
-        return PontoFlutuante.newton_rapson(x0,f2,df2,k,tol)
+        return PontoFlutuante.newtonRapson(x0,f2,df2,k,tol)
     
     def ex3():
         def f3(x):
@@ -45,7 +45,7 @@ class Atividade1:
         x1 = 1.5
         tol = 1E-5
         k = 10
-        # return PontoFlutuante.newton_rapson(x0,df3,df3,k,tol)
+        # return PontoFlutuante.newtonRapson(x0,df3,df3,k,tol)
         return PontoFlutuante.secante(x0,x1,df3,k,tol)
     
     def ex4():
@@ -86,7 +86,7 @@ class Atividade1:
         x0 = 1
         k=20
 
-        return PontoFlutuante.newton_rapson(x0,f6,df6,k,tol)
+        return PontoFlutuante.newtonRapson(x0,f6,df6,k,tol)
     
     def ex7():
         def f7(x):
@@ -102,10 +102,10 @@ class Atividade1:
         return PontoFlutuante.secante(x0,x1,f7,k,tol)
 
 if __name__ == '__main__':
-    print(f"Atv1: {Atividade1.ex1()}\n")
-    print(f"Atv2: {Atividade1.ex2()}\n")
-    print(f"Atv3: {Atividade1.ex3()}\n")
-    print(f"Atv4: {Atividade1.ex4()}\n")
-    print(f"Atv5: {Atividade1.ex5()}\n")
-    print(f"Atv6: {Atividade1.ex6()}\n")
-    print(f"Atv7: {Atividade1.ex7()}\n")
+    print(f"ex1: {Atividade1.ex1()}\n")
+    print(f"ex2: {Atividade1.ex2()}\n")
+    print(f"ex3: {Atividade1.ex3()}\n")
+    print(f"ex4: {Atividade1.ex4()}\n")
+    print(f"ex5: {Atividade1.ex5()}\n")
+    print(f"ex6: {Atividade1.ex6()}\n")
+    print(f"ex7: {Atividade1.ex7()}\n")

@@ -2,7 +2,7 @@ from scipy.optimize import minimize_scalar
 from math import ceil
 
 class Integracao:
-    def encontra_maximo(func, a, b):
+    def encontraMaximo(func, a, b):
         # Define the negative of the function to find the maximum
         neg_func = lambda x: -(func(x))
         
@@ -13,7 +13,7 @@ class Integracao:
         max_value = -result.fun
         return max_value
     
-    def encontra_maximo_abs(func, a, b):
+    def encontraMaximoAbs(func, a, b):
         # Define the negative of the function to find the maximum
         neg_func = lambda x: -abs(func(x))
         
@@ -35,21 +35,21 @@ class Integracao:
             A+= (ykant+yk)
         return (h/2)*A
     
-    def erro_trapezios(x0,x1,npontos,df2,eps = None):
+    def erroTrapezios(x0,x1,npontos,df2,eps = None):
         if not eps:
-            eps = Integracao.encontra_maximo(df2,x0,x1)
+            eps = Integracao.encontraMaximo(df2,x0,x1)
 
         return -((x1-x0)**3/(12*npontos**2))*eps
     
-    def n_pontos_trapezio(x0,x1,df2,emax,eps = None):
+    def nPontosTrapezio(x0,x1,df2,emax,eps = None):
         if not eps:
-            eps = Integracao.encontra_maximo_abs(df2,x0,x1)
+            eps = Integracao.encontraMaximoAbs(df2,x0,x1)
 
         n = ((((x1-x0)**3)*eps)/(12*emax))**(1/2)
 
         return ceil(n)
     
-    def terco_de_simpson(x0,x1,npontos,func):#,df4):
+    def tercoSimpson(x0,x1,npontos,func):#,df4):
         h = (x1-x0)/npontos
 
         xkminus2 = x0
@@ -73,19 +73,19 @@ class Integracao:
             if xkminus1 > x1:
                 break
             ykminus1 = func(xkminus1)
-            # eps = max(eps,Integracao.encontra_maximo(df4,xkminus2,xk))
+            # eps = max(eps,Integracao.encontraMaximo(df4,xkminus2,xk))
         return (h/3)*soma
 
-    def erro_terco_de_simpson(x0,x1,npontos,df4,eps=None):
+    def erroTercoSimpson(x0,x1,npontos,df4,eps=None):
 
         if not eps:
-            eps = Integracao.encontra_maximo(df4,x0,x1)
+            eps = Integracao.encontraMaximo(df4,x0,x1)
         
         return (((x1-x0)**5)/(180*npontos**4))*eps
     
-    def n_pontos_terco_simpson(x0,x1,df4,emax,eps = None):
+    def nPontosTercoSimpson(x0,x1,df4,emax,eps = None):
         if not eps:
-            eps = Integracao.encontra_maximo(df4,x0,x1)
+            eps = Integracao.encontraMaximo(df4,x0,x1)
 
         numerador = ((x1-x0)**5)*eps
         denominador = 180*emax
@@ -95,7 +95,7 @@ class Integracao:
             return ceiln+1
         return ceiln        
     
-    def tres_oitavos_de_simpson(x0,x1,nsubintervalos,func):#,df4):
+    def tresOitavosSimpson(x0,x1,nsubintervalos,func):#,df4):
         h = (x1-x0)/nsubintervalos
 
         xkminus3 = x0
@@ -131,5 +131,5 @@ class Integracao:
             if xkminus1 > x1:
                 break
             ykminus1 = func(xkminus1)
-            # eps = max(eps,Integracao.encontra_maximo(df4,xkminus2,xk))
+            # eps = max(eps,Integracao.encontraMaximo(df4,xkminus2,xk))
         return (3*h/8)*soma

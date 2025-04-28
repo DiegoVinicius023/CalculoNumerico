@@ -19,4 +19,4 @@ def erro(x,xant,tol):
 
 x0 = 1
 tol = 10E-2
-print(PontoFlutuante.newton_rapson(x0,g,dg,3,tol,erro))
+print(PontoFlutuante.newtonRapson(x0,g,dg,3,tol,erro))
