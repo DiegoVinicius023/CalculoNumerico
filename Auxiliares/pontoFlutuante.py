@@ -4,7 +4,7 @@ import numpy as np
 
 class PontoFlutuante:
 
-    def newton_rapson(x: float, f: Callable[[float], float], df: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errrel):
+    def newtonRapson(x: float, f: Callable[[float], float], df: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errRel):
         """
         :x0: ponto inicial
         :f: função a ser testada
@@ -20,9 +20,9 @@ class PontoFlutuante:
 
         if funcerr(x,xant,tol):
             return x
-        return PontoFlutuante.newton_rapson(x,f,df,k-1,tol,funcerr)
+        return PontoFlutuante.newtonRapson(x,f,df,k-1,tol,funcerr)
             
-    def secante(x0: float, x1: float, f: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errrel):
+    def secante(x0: float, x1: float, f: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errRel):
         """
         :x0: primeiro ponto inicial
         :x1: segundo ponto inicial
@@ -39,7 +39,7 @@ class PontoFlutuante:
             return x
         return PontoFlutuante.secante(x1,x,f,k,tol,funcerr)
     
-    def bissecao(x0: float, x1: float, f: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errabs):
+    def bissecao(x0: float, x1: float, f: Callable[[float], float], k: int, tol: float, funcerr: Callable[[float,float,float], bool] = FormulasErro.errAbs):
         """
         :x0: primeiro ponto inicial
         :x1: segundo ponto inicial

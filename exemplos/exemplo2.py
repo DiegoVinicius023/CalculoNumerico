@@ -25,7 +25,7 @@ def exquad():
         (pi/6,0.328),
         (pi/4,0.560)
     ]
-    vx,vy = Interpolacao.gera_vetores(pontos)
+    vx,vy = Interpolacao.geraVetores(pontos)
 
     npol = 2
     narred = 3  
@@ -42,14 +42,14 @@ def exdif_div():
     vy = [3.09,17.25,25.41]
     dict_diferencas_div = {0: vy}
     
-    return Interpolacao.gera_diferencas_divididas(vx,dict_diferencas_div)
+    return Interpolacao.geraDiferencasDivididas(vx,dict_diferencas_div)
 
 def exinternewton():
     vx = [0,0.2,0.3,0.5,0.6]
     vy = [1.008,1.064,1.125,1.343,1.512]
     xval = 0.4
 
-    return Interpolacao.internewton(vx,vy,xval)[0]
+    return Interpolacao.interNewton(vx,vy,xval)[0]
 
 def exinternewton2():
     pontos = [
@@ -59,10 +59,10 @@ def exinternewton2():
         (0.6,8.296),
         (1,21)
     ]
-    vx,vy = Interpolacao.gera_vetores(pontos)
+    vx,vy = Interpolacao.geraVetores(pontos)
     xval = 0.2
 
-    return Interpolacao.internewton(vx,vy,xval)[0]
+    return Interpolacao.interNewton(vx,vy,xval)[0]
 
 def exerrointerpol():
     vx = [2,2.5,4]
@@ -74,7 +74,7 @@ def exerrointerpol():
 
     dfn = lambda x: -6/(x**4)
 
-    return Interpolacao.maxerror(vx,dfn,npol,xval)
+    return Interpolacao.maxError(vx,dfn,npol,xval)
 
 def exh():
     vx = [0.1,0.2,0.3,0.4,0.5]
@@ -82,7 +82,7 @@ def exh():
     npol = 1
 
     dfn = lambda x: -1/(x**2)
-    maj = Interpolacao.majorante_n(vx[2:4],dfn)
+    maj = Interpolacao.majoranteN(vx[2:4],dfn)
     h = Interpolacao.h(emax,maj,npol)
     return h
 

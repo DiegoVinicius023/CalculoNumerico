@@ -15,15 +15,15 @@ class Atividade4:
 
         emax = 5e-5
 
-        n1 = Integracao.n_pontos_terco_simpson(x0,x1,df4,emax)
-        n2 = Integracao.n_pontos_terco_simpson(x1,x2,df4,emax)
+        n1 = Integracao.nPontosTercoSimpson(x0,x1,df4,emax)
+        n2 = Integracao.nPontosTercoSimpson(x1,x2,df4,emax)
 
-        erro1 = Integracao.erro_terco_de_simpson(x0,x1,n1,df4)
-        erro2 = Integracao.erro_terco_de_simpson(x1,x2,n2,df4)
+        erro1 = Integracao.erroTercoSimpson(x0,x1,n1,df4)
+        erro2 = Integracao.erroTercoSimpson(x1,x2,n2,df4)
         erro = erro1 + erro2
         
-        a1 = Integracao.terco_de_simpson(x0,x1,n1,f)
-        a2 = Integracao.terco_de_simpson(x1,x2,n2,f)
+        a1 = Integracao.tercoSimpson(x0,x1,n1,f)
+        a2 = Integracao.tercoSimpson(x1,x2,n2,f)
         return round(a1+a2,5)
     
     def ex2():
@@ -46,7 +46,7 @@ class Atividade4:
             }
             return dic_pontos[int(x)]
         
-        primeira_parte = Integracao.tres_oitavos_de_simpson(x0,x1,nsubs,retorna)
+        primeira_parte = Integracao.tresOitavosSimpson(x0,x1,nsubs,retorna)
         segunda_parte = Integracao.trapezios(14,18,retorna,2)
         return primeira_parte + segunda_parte
     
@@ -69,8 +69,8 @@ class Atividade4:
         
         n1,n2 = 3,6
 
-        a1 = Integracao.tres_oitavos_de_simpson(x0,x1,n1,retorna)
-        a2 = Integracao.tres_oitavos_de_simpson(x0,x1,n2,retorna)
+        a1 = Integracao.tresOitavosSimpson(x0,x1,n1,retorna)
+        a2 = Integracao.tresOitavosSimpson(x0,x1,n2,retorna)
         return f"{round(a1,4)}; {round(a2,4)}"
     
     def ex4():
@@ -90,7 +90,7 @@ class Atividade4:
             }
             return dic_pontos[int(x)]
 
-        return Integracao.tres_oitavos_de_simpson(x0,x1,6,retorna)
+        return Integracao.tresOitavosSimpson(x0,x1,6,retorna)
 
 
     def ex5():
@@ -101,8 +101,8 @@ class Atividade4:
 
         df4 = lambda x: (16*(x**4)-(48*x**2)+(12))*np.exp(-x**2)
 
-        ntrapezio = Integracao.n_pontos_trapezio(0,1,df2,1E-4,2)
-        ntercosimpson = Integracao.n_pontos_terco_simpson(0,1,df4,1E-4)
+        ntrapezio = Integracao.nPontosTrapezio(0,1,df2,1E-4,2)
+        ntercosimpson = Integracao.nPontosTercoSimpson(0,1,df4,1E-4)
         return ntrapezio, ntercosimpson
     
     def ex7():
@@ -121,8 +121,8 @@ class Atividade4:
         x1 = 2
         n = 4
 
-        teste = Integracao.terco_de_simpson(x0,x1,n,func)
-        # erro = Integracao.erro_terco_de_simpson(x0,x1,4,)
+        teste = Integracao.tercoSimpson(x0,x1,n,func)
+        # erro = Integracao.erroTercoSimpson(x0,x1,4,)
         return teste
 
     def ex8():
@@ -149,15 +149,15 @@ class Atividade4:
         x1=4
         n=5
         df4 = lambda x: 0
-        return Integracao.erro_terco_de_simpson(x0,x1,n,df4)
+        return Integracao.erroTercoSimpson(x0,x1,n,df4)
 
     def ex10():
         f = lambda x: -x**4+(4*x**2)
         df4 = lambda x: -24
 
-        n = Integracao.n_pontos_terco_simpson(-2,2,df4,1E-4)
+        n = Integracao.nPontosTercoSimpson(-2,2,df4,1E-4)
         
-        Area = Integracao.terco_de_simpson(-2,2,n,f)
+        Area = Integracao.tercoSimpson(-2,2,n,f)
         return Area
 
     def ex11():
@@ -177,7 +177,7 @@ class Atividade4:
         x1=1.6
         n=6
 
-        return Integracao.terco_de_simpson(x0,x1,n,retorna)
+        return Integracao.tercoSimpson(x0,x1,n,retorna)
     
     def ex12():
         x0 = 0
@@ -189,23 +189,23 @@ class Atividade4:
 
         df4 = lambda x: 24 * (1+x)**(-5)
 
-        n = Integracao.n_pontos_trapezio(x0,x1,df2,5E-4)
+        n = Integracao.nPontosTrapezio(x0,x1,df2,5E-4)
         area_trapezio = Integracao.trapezios(x0,x1,f,n)
 
-        n = Integracao.n_pontos_terco_simpson(x0,x1,df4,5E-4)
-        area_simpson = Integracao.terco_de_simpson(x0,x1,n,f)
+        n = Integracao.nPontosTercoSimpson(x0,x1,df4,5E-4)
+        area_simpson = Integracao.tercoSimpson(x0,x1,n,f)
         return area_trapezio, area_simpson
 
 if __name__ == '__main__':
-    # print(f"1: {Atividade4.ex1()}")
-    # print(f"2: {Atividade4.ex2()}")
-    # print(f"3: {Atividade4.ex3()}")
-    # print(f"4: {Atividade4.ex4()}")
-    # print(f"5: {Atividade4.ex5()}")
-    # print(f"6: {Atividade4.ex6()}")
-    # print(f"7: {Atividade4.ex7()}")
-    # print(f"8: {Atividade4.ex8()}")
-    # print(f"9: {Atividade4.ex9()}")
-    # print(f"10: {Atividade4.ex10()}")
-    # print(f"11: {Atividade4.ex11()}")
+    print(f"1: {Atividade4.ex1()}")
+    print(f"2: {Atividade4.ex2()}")
+    print(f"3: {Atividade4.ex3()}")
+    print(f"4: {Atividade4.ex4()}")
+    print(f"5: {Atividade4.ex5()}")
+    print(f"6: {Atividade4.ex6()}")
+    print(f"7: {Atividade4.ex7()}")
+    print(f"8: {Atividade4.ex8()}")
+    print(f"9: {Atividade4.ex9()}")
+    print(f"10: {Atividade4.ex10()}")
+    print(f"11: {Atividade4.ex11()}")
     print(f"12: {Atividade4.ex12()}")

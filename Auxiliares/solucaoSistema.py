@@ -3,7 +3,7 @@ import numpy as np
 
 class SolucaoSistema:
 
-    def gauss_seidel(vx, matrix, k, tol,narred = 5, funcerr = FormulasErro.erreelnum):
+    def gaussSeidel(vx, matrix, k, tol,narred = 5, funcerr = FormulasErro.errRelNum):
         vxnew = vx.copy()
         exnew = []
         for i in range(len(vx)):
@@ -14,7 +14,7 @@ class SolucaoSistema:
 
         return SolucaoSistema.gauss_seidel(vxnew,matrix,k,tol,narred,funcerr)        
     
-    def funcpad (vx, sist, pos):
+    def funcPad (vx, sist, pos):
         soma = 0
         for i in range(len(sist)):
             if i != pos and i != len(sist)-1:
@@ -39,12 +39,12 @@ class SolucaoSistema:
                 return False
         return True
     
-    def inicia_gauss_seidel(vx, matrix, k, tol,narred = 5, funcerr = FormulasErro.erreelnum):
+    def iniciaGaussSeidel(vx, matrix, k, tol,narred = 5, funcerr = FormulasErro.errRelNum):
         if not SolucaoSistema.Sassenfeld(matrix):
             return "Matriz não converge"
         return SolucaoSistema.gauss_seidel(vx,matrix,k,tol, narred,funcerr)
     
-    def resolve_linha(vx,matriz_linha,pos,narred=5):
+    def resolveLinha(vx,matriz_linha,pos,narred=5):
         soma = 0
         for i in range(len(vx)+1):
             if i != pos:
@@ -54,10 +54,10 @@ class SolucaoSistema:
                     soma -= vx[i]*matriz_linha[i]
         return round(soma/matriz_linha[pos],narred)
 
-    def eliminacao_gauss(matrix,npol,narred):
+    def eliminacaoGauss(matrix,npol,narred):
         escada = matrix.rref()[0]
         vfinal = [0]*(npol+1)
 
         for i in range(npol+1):
-            vfinal[npol-i] = SolucaoSistema.resolve_linha(vfinal,escada.row(npol-i),npol-i,narred)
+            vfinal[npol-i] = SolucaoSistema.resolveLinha(vfinal,escada.row(npol-i),npol-i,narred)
         return vfinal
