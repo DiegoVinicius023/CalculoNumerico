@@ -91,7 +91,7 @@ class Integracao:
         denominador = 180*emax
 
         ceiln = ceil(abs(numerador/denominador)**(1/4))
-        if ceiln%2 != 0:
+        if ceiln%2 != 1:
             return ceiln+1
         return ceiln        
     
@@ -133,3 +133,21 @@ class Integracao:
             ykminus1 = func(xkminus1)
             # eps = max(eps,Integracao.encontraMaximo(df4,xkminus2,xk))
         return (3*h/8)*soma
+    
+    def erroTresOitavosSimpson(x0,x1,npontos,df4,eps=None):
+        if not eps:
+            eps = Integracao.encontraMaximo(df4,x0,x1)
+        
+        return (((x1-x0)**5)/(80*npontos**4))*eps
+    
+    def nPontosTresOitavosSimpson(x0,x1,df4,emax,eps = None):
+        if not eps:
+            eps = Integracao.encontraMaximo(df4,x0,x1)
+
+        numerador = ((x1-x0)**5)*eps
+        denominador = 80*emax
+
+        ceiln = ceil(abs(numerador/denominador)**(1/4))
+        if ceiln%2 != 0:
+            return ceiln+1
+        return ceiln    

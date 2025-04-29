@@ -1,4 +1,4 @@
-import sys,os
+import sys,os, math
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Auxiliares.integracao import Integracao
 # from Auxiliares.interpolacao import Interpolacao
@@ -41,6 +41,21 @@ def ex3oitavossimpson():
     teste9 = Integracao.tresOitavosSimpson(x0,x1,nsubs,func)
     return teste3,teste9
 
-print(f"Trapezio unico: {extrapeziounico()}")
-print(f"Erro terço de simpson: {extercodesimpson()}")
-print(f"3/8 de simpson: {ex3oitavossimpson()}")
+def exNPontosTresOitavosSimpson():
+    e = 1E-4
+    x0,x1 = 0, np.pi/2
+
+    df4 = lambda x: math.sin(x)
+
+    n = Integracao.nPontosTresOitavosSimpson(x0,x1,df4,e)
+
+    h = (x1-x0)/n
+
+    A = Integracao.tresOitavosSimpson(x0,x1,n,df4)
+
+    return f"N: {n}, H: {h}, Área: {A*2}"
+
+# print(f"Trapezio unico: {extrapeziounico()}")
+# print(f"Erro terço de simpson: {extercodesimpson()}")
+# print(f"3/8 de simpson: {ex3oitavossimpson()}")
+print(f"n pontos 3/8 de simpson: {exNPontosTresOitavosSimpson()}")
