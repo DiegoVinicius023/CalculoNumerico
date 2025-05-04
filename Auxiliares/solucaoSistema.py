@@ -7,12 +7,12 @@ class SolucaoSistema:
         vxnew = vx.copy()
         exnew = []
         for i in range(len(vx)):
-            vxnew[i] = round(SolucaoSistema.funcpad(vxnew,matrix.row(i),i),narred)
+            vxnew[i] = round(SolucaoSistema.funcPad(vxnew,matrix.row(i),i),narred)
             exnew.append(funcerr(vxnew[i],vx[i]))
         k -= 1
         if (k==0) or (max(exnew) <= tol): return vxnew
 
-        return SolucaoSistema.gauss_seidel(vxnew,matrix,k,tol,narred,funcerr)        
+        return SolucaoSistema.gaussSeidel(vxnew,matrix,k,tol,narred,funcerr)        
     
     def funcPad (vx, sist, pos):
         soma = 0
@@ -42,7 +42,7 @@ class SolucaoSistema:
     def iniciaGaussSeidel(vx, matrix, k, tol,narred = 5, funcerr = FormulasErro.errRelNum):
         if not SolucaoSistema.Sassenfeld(matrix):
             return "Matriz não converge"
-        return SolucaoSistema.gauss_seidel(vx,matrix,k,tol, narred,funcerr)
+        return SolucaoSistema.gaussSeidel(vx,matrix,k,tol, narred,funcerr)
     
     def resolveLinha(vx,matriz_linha,pos,narred=5):
         soma = 0

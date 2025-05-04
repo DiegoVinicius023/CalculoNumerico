@@ -12,7 +12,7 @@ class Atividade2:
         if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0]
-        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gaussSeidel(vx,matriz,5,1E-3)
     
     def ex1b():
         matriz = Matrix([
@@ -24,7 +24,7 @@ class Atividade2:
         if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0,0]
-        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gaussSeidel(vx,matriz,5,1E-3)
     
     def ex1c():
         matriz = Matrix([
@@ -35,7 +35,7 @@ class Atividade2:
         if not SolucaoSistema.Sassenfeld(matriz):
             return "Matriz não converge"
         vx = [0,0,0]
-        return SolucaoSistema.gauss_seidel(vx,matriz,5,1E-3)
+        return SolucaoSistema.gaussSeidel(vx,matriz,5,1E-3)
     
     def ex2():
         matriz = Matrix([
